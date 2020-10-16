@@ -1,0 +1,59 @@
+---
+title: "ggplot"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=TRUE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#if(!require(devtools)) install.packages("devtools")
+#devtools::install_github("kassambara/ggpubr")
+#install.packages(c('viridisLite', 'Hmisc'))
+#install.packages("colorspace", dependencies = TRUE)
+library(tidyverse)
+library(tidyr)
+library(ggplot2)
+library(haven)
+library(acepack)
+library(corrplot)
+library(Hmisc)
+library(ggeffects)
+require(ggplot2)
+
+read_sav("~/Dropbox/BSHS/Thesis Prep/Dataset/rgthesisic.sav") -> rgthesis
+rgthesis <- data.frame(rgthesis)
+
+ggplot(data = rgthesis, mapping = aes(x = CWIINHS, y = SDPstatusGradient
+)) + geom_boxplot()
+
+sp2<-ggplot(rgthesis, aes(x=momCWIINHS , y=CWIINHS
+, color=SDPstatusGradient)) + geom_point()
+sp2+scale_color_gradient(low="blue", high="pink")
+```
+
+```{r, results='hide'}
+rcorr(as.matrix(rgthesis))
+cor(rgthesis, y = rgthesis$"CWIINHS", method = "pearson", use = "complete.obs")
+```
+```{r,include=TRUE, warning=FALSE, message=FALSE}
+sp2<-ggplot(rgthesis, aes(x=momCWIINHS, y=CWIINHS
+, color=SDPstatusGradient)) + geom_point(size = 3)
+sp2+scale_color_gradient(low="blue", high="pink")
+
+
+equation1=function(x){coef(fit1)[2]*x+coef(fit1)[1]}
+equation2=function(x){coef(fit1)[2]*x+coef(fit1)[1]+coef(fit1)[3]}
+
+ggplot(rgthesis,aes(y=CWIINHS,x=FSIQ_est_child,color=SDPstatusGradient))+geom_point()+  stat_function(fun=equation1,geom="line",color=scales::hue_pal()(2)[1])+  stat_function(fun=equation2,geom="line",color=scales::hue_pal()(2)[2])
+
+
+ggplot()
+head(rgthesis)
+
+ggplot(rgthesis, aes(x=Logan_IC_SSRT_Avg, color = Child)) + geom_histogram(fill="white")
+
+ggplot(rgthesis, aes(x=lg_logan, y=MAGEc,  color=as.factor(Child)))+
+  geom_point(shape=19, size = 3) + 
+  geom_smooth(method=lm) + scale_color_brewer(palette="Accent") + theme_minimal() 
+```
