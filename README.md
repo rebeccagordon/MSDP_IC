@@ -1,4 +1,6 @@
 # Viz
-This repo contains miscellaneous data visualizations projects using R.
+This repo contains miscellaneous data visualizations projects from my thesis using R.
+
+Abstract: Maternal smoking during pregnancy (MSDP) is associated with adverse outcomes in children including low birth weight, deficits in neurodevelopment, poorer academic achievement, and a spectrum of behavioral problems. Increased exposure to MSDP is linked to greater deficits in cognitive functioning in adolescence and decreased newborn physical health. Children exposed to MSDP also exhibit less efficient executive function (EF) abilities than non-exposed children, including inhibitory control (IC) problems. This study investigated the potential causal effects of MSDP on immediate newborn functioning, as well as on IC in adolescence. We applied a sibling comparison framework to evaluate within- and between-family effects of MSDP on: immediate (i.e., 5-minute APGAR scores) and long-term (i.e., IC) outcomes in siblings who were exposed to different levels of MSDP (N=173 families). We fit 5 hierarchical linear models to examine the effects of MSDP on each outcome. MSDP did not significantly predict newborn functioning or IC in adolescence. Further research is needed to examine the effects of MSDP on predictors of IC problems earlier in development to isolate potential targets for intervention. Further, more research is needed to explore the effects MSDP on different aspects of EF. 
 
 Additionally, testing out vignettes from http://www.sthda.com
